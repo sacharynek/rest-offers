@@ -1,5 +1,7 @@
 package pl.javastart.restoffers.model;
 
+import pl.javastart.restoffers.model.dto.OfferDto;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -80,5 +82,9 @@ public class Offer {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public OfferDto toDto(){
+        return new OfferDto(this);
     }
 }
