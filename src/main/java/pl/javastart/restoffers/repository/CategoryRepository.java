@@ -5,4 +5,6 @@ import pl.javastart.restoffers.model.Category;
 
 public interface CategoryRepository extends JpaRepository<Category,Long> {
 
+
+    Category findAllByName(String name);
 }

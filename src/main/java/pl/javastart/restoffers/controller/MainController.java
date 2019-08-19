@@ -1,8 +1,10 @@
 package pl.javastart.restoffers.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.javastart.restoffers.model.Offer;
@@ -55,11 +57,15 @@ public class MainController {
 
 
     @PostMapping("/api/offers")
-    public void addOffer(OfferDto offerDto) {
-        Offer offer = offerDto.toOffer();
+    public ResponseEntity<OfferDto> addOffer(@RequestBody OfferDto offer) {
+        System.out.println(offer);
+       try {
+            OfferDto savedOffer = offerService.insert(offer);
+            return ResponseEntity.ok(savedOffer);
+        } catch(IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        }
 
-        offerService.saveOffer(offer);
     }
-
 
 }

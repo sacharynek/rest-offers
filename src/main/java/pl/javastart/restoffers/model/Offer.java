@@ -2,6 +2,7 @@ package pl.javastart.restoffers.model;
 
 import pl.javastart.restoffers.model.dto.OfferDto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,48 +17,48 @@ public class Offer {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private long Id;
-    private String Title;
-    private String Description;
+    private Long id;
+    private String title;
+    private String description;
     private String imgUrl;
     private BigDecimal price;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
 
     public Offer() {
     }
 
     public Offer(String title, String description, String imgUrl, BigDecimal price, Category category) {
-        Title = title;
-        Description = description;
+        this.title = title;
+        this.description = description;
         this.imgUrl = imgUrl;
         this.price = price;
         this.category = category;
     }
 
-    public long getId() {
-        return Id;
+    public Long getId() {
+        return id;
     }
 
-    public void setId(long id) {
-        Id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getImgUrl() {

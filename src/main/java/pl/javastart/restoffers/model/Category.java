@@ -16,9 +16,9 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private long Id;
-    private String Name;
-    private String Description;
+    private long id;
+    private String name;
+    private String description;
 
     @JsonIgnore
     @OneToMany(mappedBy = "category")
@@ -28,33 +28,33 @@ public class Category {
     }
 
     public Category(String name, String description, List<Offer> offers) {
-        Name = name;
-        Description = description;
+        this.name = name;
+        this.description = description;
         this.offers = offers;
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public List<Offer> getOffers() {

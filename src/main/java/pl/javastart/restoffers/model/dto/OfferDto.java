@@ -1,9 +1,9 @@
 package pl.javastart.restoffers.model.dto;
 
-import pl.javastart.restoffers.model.Category;
 import pl.javastart.restoffers.model.Offer;
 
 import java.math.BigDecimal;
+
 //Dto - data transfer object
 // w większych aplikacjach praktyznie nie zwraca się encji tylko Dto
 public class OfferDto {
@@ -18,7 +18,8 @@ public class OfferDto {
 
     private String category;
 
-    public OfferDto(){}
+    public OfferDto() {
+    }
 
 
     public OfferDto(Offer offer) {
@@ -31,20 +32,7 @@ public class OfferDto {
 
     }
 
-    public Offer toOffer(){
-        Offer output = new Offer();
-        output.setId(this.getId());
-        output.setTitle(this.getTitle());
-        output.setDescription(this.getDescription());
-        output.setImgUrl(this.getImgUrl());
-        output.setPrice(this.getPrice());
 
-        Category category = new Category();
-        category.setName(this.getCategory());
-        output.setCategory(category);
-
-        return output;
-    }
 
     public long getId() {
         return Id;
